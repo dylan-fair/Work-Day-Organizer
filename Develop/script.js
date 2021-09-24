@@ -4,15 +4,17 @@ var currentDate = function(){
     currentTime.textContent = time.format('dddd, MMMM Do');
 }
 var saveBtnHandler = function(){
-    $("saveItem"+ i).on("click", function(){
-        saveTask(i);
-    })
+    for(let i = 0; i < 9; i++){
+        $(`#saveItem${i}`).on("click", function(){
+            saveTask(i);
+        })
+    }
 }
 var saveTask = function(id) {
-    var currentTask = JSON.parse(localStorage.getItem("event"));
+    var currentTask = JSON.parse(localStorage.getItem("events"));
     var inputTask = $(`#input${id}`).val();
     currentTask[id] = inputTask;
-    localStorage.setItem("event", JSON.stringify(currentTask));
+    localStorage.setItem("events", JSON.stringify(currentTask));
 }
 var storage = function(){
     var events = JSON.parse(localStorage.getItem("events"));
