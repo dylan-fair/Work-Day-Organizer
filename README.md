@@ -16,4 +16,4 @@ https://dylan-fair.github.io/Work-Day-Organizer/
 
 ## ScreenShot
 
-![alt text](./develop/screenshot.png)
+![alt text](develop/screenshot.png)
