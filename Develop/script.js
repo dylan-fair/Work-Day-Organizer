@@ -22,7 +22,7 @@ var storage = function(){
         localStorage.setItem("events", JSON.stringify([]));
         return;
     }
-    for(var i = 0; i < 9; i++){
+    for(let i = 0; i < 9; i++){
         var taskEl = $(`#input${i}`);
         if(events[i]){
             taskEl.val(events[i]);
@@ -31,9 +31,11 @@ var storage = function(){
 }
 var colors = function(){
     var current = time.format("H");
+    current = parseInt(current);
     for(var i = 0; i < 9; i++){
         var hourSection = $(`#input${i}`);
         var hour = hourSection.attr("data-hour");
+        hour = parseInt(hour);
         if(current > hour){
             hourSection.addClass("bg-secondary");
         }
@@ -49,14 +51,15 @@ var pageHandler = function() {
     currentDate();
     saveBtnHandler();
     storage();
+    colors();
 }
 setInterval(function(){
-    for(var i = 0; i < 9; i++){
+    for(let i = 0; i < 9; i++){
         var hourSection = $(`#input${i}`);
         hourSection.removeClass("bg-secondary")
         hourSection.removeClass("bg-success");
         hourSection.removeClass("bd-danger");
     }
     colors()
-}(1000 * 60))
+},(1000 * 60))
 pageHandler();
